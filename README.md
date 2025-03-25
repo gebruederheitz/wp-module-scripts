@@ -12,11 +12,6 @@ I've wrapped it all in a reusable class, improved some of the regexes and logic,
 and added the convenience method for registering / enqueueing the scripts with
 the required data declared in the first place.
 
-> [!NOTE]
-> All scripts are loaded asynchronously in the "footer". The script paths are
-> passed through `get_theme_file_uri()`.
-
-
 ## Installation
 
 ```shell
@@ -24,6 +19,34 @@ composer require gebruederheitz/wp-module-scripts
 ```
 
 ## Usage
+
+The simplest usage involves instantiating the handler (so it can register its
+action hook callback) and adding the required extra data to a script:
+
+```php
+// functions.php or similar
+use GebruederHeitz\Wordpress\ModuleScriptHandler;
+
+// Initialize once so the action can be hooked
+ModuleScriptHandler::getInstance();
+
+// The script that has been registered (or enqueued) with the handle
+// 'my-legacy-script' will now have the 'nomodule' attribute added to it.
+wp_script_add_data('my-legacy-script', 'nomodule', true);
+// This will be "type='module'":
+wp_script_add_data('my-esm-script', 'type', 'module');
+
+```
+
+### Using the utility method for registering / enqueueing
+
+The utility method `register()` will handle both the registration / enqueueing
+of the scripts and the addition of the required attributes in one go.
+
+> [!NOTE]
+> All scripts are loaded asynchronously in the "footer". The script paths are
+> passed through `get_theme_file_uri()`.
+
 
 ```php
 // functions.php or similar
