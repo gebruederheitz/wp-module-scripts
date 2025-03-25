@@ -1,6 +1,6 @@
 {
   "name": "@gebruederheitz/wp-module-scripts-util",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Utilities for the gebruederheitz/wp-module-scripts PHP composer package",
   "main": "",
   "engines": {
