@@ -12,6 +12,12 @@ tasks:
     internal: true
     cmd: npm run lint
 
+  test:
+    deps:
+      - install
+    cmds:
+      - composer test
+
   prettier:
     desc: Make prettier process and fix all files in src/
     dir: util

@@ -78,8 +78,8 @@ class ModuleScriptHandler
      */
     public function register(
         string $handle,
-        string $modulePath = null,
-        string $nomodulePath = null,
+        ?string $modulePath = null,
+        ?string $nomodulePath = null,
         array $dependencies = [],
         bool $enqueue = false,
         ?string $version = null
